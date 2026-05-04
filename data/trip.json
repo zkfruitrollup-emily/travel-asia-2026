@@ -1,0 +1,41 @@
+{
+  "title": "Em & Trish",
+  "subtitle": "Bangkok & Philippines · May 7–26",
+  "start_date": "2026-05-07",
+  "end_date": "2026-05-26",
+  "trip_begins_event_marker": "Land Bangkok (BKK)",
+  "segments": [
+    {
+      "country": "USA",
+      "label": "New York",
+      "tz": "America/New_York",
+      "tz_label": "EDT",
+      "from": "2026-05-07",
+      "to": "2026-05-08"
+    },
+    {
+      "country": "Japan",
+      "label": "Tokyo",
+      "tz": "Asia/Tokyo",
+      "tz_label": "JST",
+      "from": "2026-05-08",
+      "to": "2026-05-09"
+    },
+    {
+      "country": "Thailand",
+      "label": "Bangkok",
+      "tz": "Asia/Bangkok",
+      "tz_label": "ICT",
+      "from": "2026-05-09",
+      "to": "2026-05-13"
+    },
+    {
+      "country": "Philippines",
+      "label": "Philippines",
+      "tz": "Asia/Manila",
+      "tz_label": "PHT",
+      "from": "2026-05-13",
+      "to": "2026-05-26"
+    }
+  ]
+}
