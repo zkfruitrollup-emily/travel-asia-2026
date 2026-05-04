@@ -2,12 +2,12 @@
   "days": [
     {
       "date": "2026-05-07",
-      "weekday": "Wed",
+      "weekday": "Thurs",
       "country": "USA",
       "events": [
         {
           "id": "2026-05-07-001",
-          "weekday": "Wed",
+          "weekday": "Thurs",
           "country": "USA",
           "time": "09:00",
           "tz": "EDT",
@@ -22,7 +22,7 @@
         },
         {
           "id": "2026-05-07-002",
-          "weekday": "Wed",
+          "weekday": "Thurs",
           "country": "USA",
           "time": "12:30",
           "tz": "EDT",
@@ -37,7 +37,7 @@
         },
         {
           "id": "2026-05-07-003",
-          "weekday": "Wed",
+          "weekday": "Thurs",
           "country": "USA",
           "time": "13:30",
           "tz": "EDT",
@@ -57,21 +57,6 @@
       "weekday": "Fri",
       "country": "Japan",
       "events": [
-        {
-          "id": "2026-05-08-007",
-          "weekday": "Fri",
-          "country": "Japan",
-          "time": "00:30",
-          "tz": "JST",
-          "type": "transit",
-          "title": "Boarding · HND",
-          "location": "HND",
-          "status": "confirmed",
-          "locked": true,
-          "option_a": null,
-          "option_b": null,
-          "notes": "From your sheet"
-        },
         {
           "id": "2026-05-08-004",
           "weekday": "Fri",
@@ -122,8 +107,23 @@
     {
       "date": "2026-05-09",
       "weekday": "Sat",
-      "country": "Thailand",
+      "country": "Japan",
       "events": [
+        {
+          "id": "2026-05-09-007",
+          "weekday": "Sat",
+          "country": "Japan",
+          "time": "00:30",
+          "tz": "JST",
+          "type": "transit",
+          "title": "Boarding · HND",
+          "location": "HND",
+          "status": "confirmed",
+          "locked": true,
+          "option_a": null,
+          "option_b": null,
+          "notes": "From your sheet"
+        },
         {
           "id": "2026-05-09-008",
           "weekday": "Sat",
@@ -168,10 +168,17 @@
           "option_a": null,
           "option_b": null,
           "notes": "Hotel will hold bags before 2 PM checkin"
-        },
+        }
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "weekday": "Sun",
+      "country": "Thailand",
+      "events": [
         {
-          "id": "2026-05-09-011",
-          "weekday": "Sat",
+          "id": "2026-05-10-011",
+          "weekday": "Sun",
           "country": "Thailand",
           "time": "14:00",
           "tz": "ICT",
@@ -183,16 +190,24 @@
           "option_a": null,
           "option_b": null,
           "notes": null
-        }
-      ]
-    },
-    {
-      "date": "2026-05-10",
-      "weekday": "Sun",
-      "country": "Thailand",
-      "events": [
+        },
         {
           "id": "2026-05-10-012",
+          "weekday": "Sun",
+          "country": "Thailand",
+          "time": null,
+          "tz": "ICT",
+          "type": "activity",
+          "title": "Bangkok day · Dinsomon",
+          "location": "Bangkok",
+          "status": "tentative",
+          "locked": false,
+          "option_a": null,
+          "option_b": null,
+          "notes": "Free day — pick from Things to do"
+        },
+        {
+          "id": "2026-05-10-013",
           "weekday": "Sun",
           "country": "Thailand",
           "time": null,
@@ -214,7 +229,7 @@
       "country": "Thailand",
       "events": [
         {
-          "id": "2026-05-11-013",
+          "id": "2026-05-11-014",
           "weekday": "Mon",
           "country": "Thailand",
           "time": "07:00",
@@ -229,7 +244,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-11-014",
+          "id": "2026-05-11-015",
           "weekday": "Mon",
           "country": "Thailand",
           "time": "20:00",
@@ -251,7 +266,7 @@
       "country": "Thailand",
       "events": [
         {
-          "id": "2026-05-12-015",
+          "id": "2026-05-12-016",
           "weekday": "Tue",
           "country": "Thailand",
           "time": null,
@@ -273,7 +288,7 @@
       "country": "Thailand",
       "events": [
         {
-          "id": "2026-05-13-016",
+          "id": "2026-05-13-017",
           "weekday": "Wed",
           "country": "Thailand",
           "time": "08:30",
@@ -288,7 +303,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-13-017",
+          "id": "2026-05-13-018",
           "weekday": "Wed",
           "country": "Thailand",
           "time": "11:20",
@@ -303,7 +318,7 @@
           "notes": "Booked"
         },
         {
-          "id": "2026-05-13-018",
+          "id": "2026-05-13-019",
           "weekday": "Wed",
           "country": "Thailand",
           "time": "12:20",
@@ -318,7 +333,7 @@
           "notes": "Booked"
         },
         {
-          "id": "2026-05-13-019",
+          "id": "2026-05-13-020",
           "weekday": "Wed",
           "country": "Philippines",
           "time": "17:00",
@@ -333,7 +348,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-13-020",
+          "id": "2026-05-13-021",
           "weekday": "Wed",
           "country": "Philippines",
           "time": "18:00",
@@ -355,7 +370,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-14-021",
+          "id": "2026-05-14-022",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "04:20",
@@ -370,7 +385,7 @@
           "notes": "Round trip — return same day or next?"
         },
         {
-          "id": "2026-05-14-022",
+          "id": "2026-05-14-023",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "05:15",
@@ -385,7 +400,7 @@
           "notes": "Round trip — return same day or next?"
         },
         {
-          "id": "2026-05-14-023",
+          "id": "2026-05-14-024",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "06:15",
@@ -400,7 +415,7 @@
           "notes": "Round trip — return same day or next?"
         },
         {
-          "id": "2026-05-14-024",
+          "id": "2026-05-14-025",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "07:15",
@@ -415,7 +430,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-14-025",
+          "id": "2026-05-14-026",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "15:00",
@@ -437,7 +452,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-15-026",
+          "id": "2026-05-15-027",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "12:00",
@@ -452,22 +467,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-15-032",
-          "weekday": "Fri",
-          "country": "Philippines",
-          "time": "12:00",
-          "tz": "PHT",
-          "type": "check-out",
-          "title": "Check out · Holiday Inn Newport Resort",
-          "location": "1 Jasmine Dr, Pasay City, 1309 Metro Manila, Philippines",
-          "status": "confirmed",
-          "locked": false,
-          "option_a": null,
-          "option_b": null,
-          "notes": null
-        },
-        {
-          "id": "2026-05-15-027",
+          "id": "2026-05-15-028",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "15:00",
@@ -482,7 +482,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-15-028",
+          "id": "2026-05-15-029",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "17:00",
@@ -497,7 +497,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-15-029",
+          "id": "2026-05-15-030",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "18:00",
@@ -512,7 +512,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-15-030",
+          "id": "2026-05-15-031",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "19:10",
@@ -527,7 +527,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-15-031",
+          "id": "2026-05-15-032",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "19:20",
@@ -552,6 +552,21 @@
           "id": "2026-05-16-033",
           "weekday": "Sat",
           "country": "Philippines",
+          "time": "12:00",
+          "tz": "PHT",
+          "type": "check-out",
+          "title": "Check out · Holiday Inn Newport Resort",
+          "location": "1 Jasmine Dr, Pasay City, 1309 Metro Manila, Philippines",
+          "status": "confirmed",
+          "locked": false,
+          "option_a": null,
+          "option_b": null,
+          "notes": null
+        },
+        {
+          "id": "2026-05-16-034",
+          "weekday": "Sat",
+          "country": "Philippines",
           "time": "TBD",
           "tz": "PHT",
           "type": "wedding",
@@ -571,7 +586,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-17-034",
+          "id": "2026-05-17-035",
           "weekday": "Sun",
           "country": "Philippines",
           "time": "ALL DAY",
@@ -593,7 +608,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-18-035",
+          "id": "2026-05-18-036",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "12:00",
@@ -608,7 +623,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-18-036",
+          "id": "2026-05-18-037",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "19:00",
@@ -630,7 +645,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-19-037",
+          "id": "2026-05-19-038",
           "weekday": "Tue",
           "country": "Philippines",
           "time": null,
@@ -652,7 +667,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-20-038",
+          "id": "2026-05-20-039",
           "weekday": "Wed",
           "country": "Philippines",
           "time": null,
@@ -674,7 +689,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-21-039",
+          "id": "2026-05-21-040",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "07:00",
@@ -689,7 +704,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-21-040",
+          "id": "2026-05-21-041",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "14:00",
@@ -704,7 +719,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-21-041",
+          "id": "2026-05-21-042",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "15:05",
@@ -719,7 +734,7 @@
           "notes": "Round trip"
         },
         {
-          "id": "2026-05-21-042",
+          "id": "2026-05-21-043",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "16:25",
@@ -734,7 +749,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-21-043",
+          "id": "2026-05-21-044",
           "weekday": "Thu",
           "country": "Philippines",
           "time": "17:25",
@@ -756,7 +771,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-22-044",
+          "id": "2026-05-22-045",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "06:00",
@@ -771,7 +786,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-22-045",
+          "id": "2026-05-22-046",
           "weekday": "Fri",
           "country": "Philippines",
           "time": "14:00",
@@ -793,7 +808,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-23-046",
+          "id": "2026-05-23-047",
           "weekday": "Sat",
           "country": "Philippines",
           "time": null,
@@ -815,7 +830,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-24-047",
+          "id": "2026-05-24-048",
           "weekday": "Sun",
           "country": "Philippines",
           "time": "14:00",
@@ -830,7 +845,7 @@
           "notes": "Philippines"
         },
         {
-          "id": "2026-05-24-048",
+          "id": "2026-05-24-049",
           "weekday": "Sun",
           "country": "Philippines",
           "time": "17:00",
@@ -845,7 +860,7 @@
           "notes": "Booked"
         },
         {
-          "id": "2026-05-24-049",
+          "id": "2026-05-24-050",
           "weekday": "Sun",
           "country": "Philippines",
           "time": "23:00",
@@ -867,7 +882,7 @@
       "country": "Philippines",
       "events": [
         {
-          "id": "2026-05-25-050",
+          "id": "2026-05-25-051",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "10:30",
@@ -882,7 +897,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-25-051",
+          "id": "2026-05-25-052",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "12:00",
@@ -897,7 +912,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-25-052",
+          "id": "2026-05-25-053",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "13:20",
@@ -912,7 +927,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-25-054",
+          "id": "2026-05-25-055",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "13:20",
@@ -927,7 +942,7 @@
           "notes": "Booked — TRIP ENDS (or May 26?)"
         },
         {
-          "id": "2026-05-25-053",
+          "id": "2026-05-25-054",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "21:30",
@@ -942,7 +957,7 @@
           "notes": null
         },
         {
-          "id": "2026-05-25-055",
+          "id": "2026-05-25-056",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "23:30",
@@ -957,7 +972,7 @@
           "notes": "Booked — TRIP ENDS (or May 26?)"
         },
         {
-          "id": "2026-05-25-056",
+          "id": "2026-05-25-057",
           "weekday": "Mon",
           "country": "Philippines",
           "time": "23:30",
