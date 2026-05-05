@@ -451,9 +451,7 @@
       : ev.status === 'done'
       ? `<span class="pill done"><span class="dot"></span>Done</span>` : '';
     const tripBeginsPill = isHighlight ? `<span class="pill trip-begins"><span class="dot"></span>Trip begins</span>` : '';
-    const lockOrEdit = ev.locked
-      ? ICON.lock
-      : (ev.status === 'tentative' || ev.option_a) ? ICON.edit : '';
+    const lockOrEdit = ev.locked ? ICON.lock : '';
 
     const ab = (ev.option_a || ev.option_b) ? `
       <div class="ab-toggle" data-ev="${ev.id}">
@@ -467,15 +465,6 @@
         </button>
       </div>` : '';
 
-    const notesBlock = ev.notes ? `
-      <div class="event-notes">
-        ${ICON.edit.replace('class="edit-icon"', 'class="event-notes-icon"')}
-        <div>
-          <div class="event-notes-label">Notes</div>
-          <div class="event-notes-text">${escapeHtml(ev.notes)}</div>
-        </div>
-      </div>` : '';
-
     const card = el(`
       <div class="${klass.join(' ')}">
         <div class="event-time">
@@ -487,7 +476,6 @@
           ${ev.location ? `<div class="event-meta">${escapeHtml(ev.location)}</div>` : ''}
           <div class="event-foot">${tripBeginsPill || statusPill}${lockOrEdit}</div>
           ${ab}
-          ${notesBlock}
         </div>
       </div>`);
     card.querySelectorAll('.ab-option').forEach(btn => {
@@ -1048,7 +1036,7 @@
             <button type="button" class="modal-close" aria-label="Close">${ICON.close}</button>
           </div>
           <p class="modal-sub">Enter the passcode to post on this device.</p>
-          <input class="modal-input passcode-input" type="password" inputmode="numeric" autocomplete="one-time-code" placeholder="passcode" autofocus>
+          <input class="modal-input passcode-input" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="passcode" autofocus>
           <div class="modal-error"></div>
           <div class="modal-actions">
             <button type="submit" class="action-btn primary">Unlock</button>
