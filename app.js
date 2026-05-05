@@ -1088,13 +1088,13 @@
             <button type="button" data-who="Trish" class="${c.author==='Trish'?'active':''}">Trish</button>
           </div>
 
-          <label class="photo-drop ${c.photoPreview?'has-photo':''}">
+          <div class="photo-drop ${c.photoPreview?'has-photo':''}">
             ${c.photoPreview
               ? `<img class="photo-preview" src="${c.photoPreview}" alt="">`
               : `<div class="photo-drop-cta">${ICON.image}<span>Add photo</span></div>`}
-            <input type="file" class="photo-input" accept="image/*" hidden>
             ${c.photoPreview ? `<button type="button" class="photo-clear" aria-label="Remove">${ICON.close}</button>` : ''}
-          </label>
+          </div>
+          <input type="file" class="photo-input" accept="image/*" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
           <textarea class="modal-input caption-input" placeholder="What's the moment?" rows="3" maxlength="1500">${escapeHtml(c.caption)}</textarea>
 
@@ -1130,6 +1130,25 @@
 
     const drop = back.querySelector('.photo-drop');
     const fileInput = back.querySelector('.photo-input');
+
+    function showEmptyState() {
+      drop.classList.remove('has-photo');
+      drop.innerHTML = `<div class="photo-drop-cta">${ICON.image}<span>Add photo</span></div>`;
+    }
+    function showPreview(url) {
+      drop.classList.add('has-photo');
+      drop.innerHTML =
+        `<img class="photo-preview" src="${url}" alt="">` +
+        `<button type="button" class="photo-clear" aria-label="Remove">${ICON.close}</button>`;
+      drop.querySelector('.photo-clear').addEventListener('click', e => {
+        e.stopPropagation();
+        c.photoFile = null;
+        c.photoPreview = null;
+        fileInput.value = '';
+        showEmptyState();
+      });
+    }
+
     drop.addEventListener('click', e => {
       if (e.target.closest('.photo-clear')) return;
       fileInput.click();
@@ -1137,22 +1156,25 @@
     fileInput.addEventListener('change', async () => {
       const file = fileInput.files?.[0];
       if (!file) return;
+      drop.innerHTML = `<div class="photo-drop-cta"><span>Loading…</span></div>`;
       try {
         const compressed = await compressImage(file);
         c.photoFile = compressed;
         c.photoPreview = URL.createObjectURL(compressed);
-        // re-render the modal contents to swap in the preview
-        closeModal();
-        openComposer();
+        showPreview(c.photoPreview);
       } catch (err) {
+        console.error('image load error:', err);
         toast('Could not load image');
+        showEmptyState();
       }
     });
-    back.querySelector('.photo-clear')?.addEventListener('click', () => {
+    // wire the initial clear button if the modal opened with an existing preview
+    drop.querySelector('.photo-clear')?.addEventListener('click', e => {
+      e.stopPropagation();
       c.photoFile = null;
       c.photoPreview = null;
-      closeModal();
-      openComposer();
+      fileInput.value = '';
+      showEmptyState();
     });
 
     back.querySelector('form').addEventListener('submit', async e => {
