@@ -1235,20 +1235,37 @@
     });
   }
 
-  let _blobClient = null;
-  async function getBlobClient() {
-    if (_blobClient) return _blobClient;
-    _blobClient = await import('https://esm.sh/@vercel/blob@0.27/client');
-    return _blobClient;
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        const base64 = String(dataUrl).split(',')[1] || '';
+        resolve(base64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   }
 
   async function uploadPhoto(file) {
-    const { upload } = await getBlobClient();
-    const blob = await upload(`journal/${Date.now()}-${file.name}`, file, {
-      access: 'public',
-      handleUploadUrl: 'api/upload',
+    const dataBase64 = await fileToBase64(file);
+    const safeName = (file.name || 'photo.jpg').replace(/[^a-zA-Z0-9._-]/g, '_');
+    const r = await fetch('api/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        filename: `journal/${Date.now()}-${safeName}`,
+        contentType: file.type || 'image/jpeg',
+        dataBase64,
+      }),
     });
-    return blob.url;
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.error || `upload failed (${r.status})`);
+    }
+    const data = await r.json();
+    return data.url;
   }
 
   // ---------- main render ----------
