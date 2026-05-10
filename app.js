@@ -66,7 +66,8 @@
   const state = {
     trip: null,
     timeline: null,
-    vault: null,
+    vault: null,           // populated only after the user is authed
+    vaultLoading: false,
     route: 'timeline',
     vaultCountry: 'Bangkok',
     expanded: new Set(),
@@ -85,18 +86,36 @@
 
   // ---------- data loading ----------
   async function load() {
-    const [trip, timeline, vault] = await Promise.all([
+    const [trip, timeline] = await Promise.all([
       fetch('data/trip.json').then(r => r.json()),
       fetch('data/timeline.json').then(r => r.json()),
-      fetch('data/vault.json').then(r => r.json()),
     ]);
     state.trip = trip;
     state.timeline = timeline;
-    state.vault = vault;
     state.vaultCountry = currentSegment().vault_segment;
     // pre-fill composer author from local pref
     const a = localStorage.getItem('et_author');
     if (a === 'Em' || a === 'Trish') state.journal.composer.author = a;
+  }
+
+  async function ensureVaultLoaded() {
+    if (state.vault || state.vaultLoading) return;
+    if (!state.journal.authed) return;
+    state.vaultLoading = true;
+    try {
+      const r = await fetch('api/vault');
+      if (r.status === 401) {
+        state.journal.authed = false;
+        state.vault = null;
+      } else if (r.ok) {
+        state.vault = await r.json();
+      }
+    } catch (err) {
+      console.error('vault load error', err);
+    } finally {
+      state.vaultLoading = false;
+      if (state.route === 'vault') render();
+    }
   }
 
   async function refreshAuth() {
@@ -216,6 +235,7 @@
     state.route = parseRoute();
     state.datePickerOpen = false;
     if (state.route === 'journal') ensureJournalLoaded();
+    if (state.route === 'vault') ensureVaultLoaded();
     render();
   });
 
@@ -772,9 +792,37 @@
       </div>`);
   }
 
+  function renderVaultLocked() {
+    const wrap = el(`
+      <div class="vault-locked">
+        <div class="vault-locked-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h2>Vault is private</h2>
+        <p>Bookings, addresses, confirmation codes, and emergency contacts are only visible to Em &amp; Trish. Same passcode as posting.</p>
+        <button class="unlock-btn-large">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Unlock vault</span>
+        </button>
+      </div>`);
+    wrap.querySelector('.unlock-btn-large').addEventListener('click', () => openPasscodePrompt());
+    return wrap;
+  }
+
   function renderVault() {
     const main = document.getElementById('main');
     main.innerHTML = '';
+
+    if (!state.journal.authed) {
+      main.appendChild(renderVaultLocked());
+      return;
+    }
+    if (!state.vault) {
+      if (!state.vaultLoading) ensureVaultLoaded();
+      main.appendChild(el(`<div class="loading">Unlocking vault…</div>`));
+      return;
+    }
+
     main.appendChild(renderCountryToggle());
     main.appendChild(renderSectionPills());
 
@@ -991,10 +1039,11 @@
       postBtn.addEventListener('click', () => openComposer());
       actions.appendChild(postBtn);
 
-      const logoutBtn = el(`<button class="logout-btn" title="Log out of posting">${ICON.close}</button>`);
+      const logoutBtn = el(`<button class="logout-btn" title="Log out">${ICON.close}</button>`);
       logoutBtn.addEventListener('click', async () => {
         await fetch('api/auth', { method: 'DELETE' });
         state.journal.authed = false;
+        state.vault = null;
         renderJournal();
       });
       actions.appendChild(logoutBtn);
@@ -1062,8 +1111,9 @@
         if (!r.ok) { errEl.textContent = 'Could not unlock.'; return; }
         state.journal.authed = true;
         closeModal();
-        renderJournal();
-        toast('Unlocked. Tap + Post to share.');
+        render();
+        ensureVaultLoaded();
+        toast(state.route === 'vault' ? 'Vault unlocked' : 'Unlocked. Tap + Post to share.');
       } catch {
         errEl.textContent = 'Network error.';
       }
@@ -1327,6 +1377,13 @@
     state.route = parseRoute();
     render();
     setInterval(tick, 1000);
+    // Always refresh auth at boot so Vault knows whether to render the locked
+    // state or load contents. Keep it non-blocking — Timeline renders first.
+    refreshAuth().then(() => {
+      if (state.route === 'vault') ensureVaultLoaded();
+      if (state.route === 'journal' || state.route === 'vault') render();
+      else if (state.journal.authed) ensureVaultLoaded(); // pre-warm
+    });
     if (state.route === 'journal') ensureJournalLoaded();
   }
 

@@ -546,6 +546,53 @@ a { color: inherit; text-decoration: none; }
 }
 .source-row .drive svg { width: 11px; height: 11px; }
 
+/* vault locked state */
+.vault-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px 40px;
+  gap: 16px;
+}
+.vault-locked-icon {
+  width: 72px; height: 72px;
+  border-radius: 999px;
+  background: var(--lavender-mist);
+  display: flex; align-items: center; justify-content: center;
+}
+.vault-locked-icon svg {
+  width: 30px; height: 30px;
+  stroke: var(--cerulean-deep);
+}
+.vault-locked h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px; font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+.vault-locked p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 320px;
+}
+.unlock-btn-large {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px;
+  background: var(--cerulean-deep);
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.unlock-btn-large svg {
+  width: 14px; height: 14px;
+  stroke: #FFFFFF;
+}
+
 /* on the ground */
 .otg-card {
   background: var(--canvas);
